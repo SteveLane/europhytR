@@ -9,7 +9,9 @@
 #' @param year Year (integer) of the data to extract
 #'
 #' @examples
+#' \dontrun{
 #' oct2016 <- dlNotify(10, 2016)
+#' }
 #' 
 #' @export dlNotify
 

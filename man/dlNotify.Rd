@@ -18,7 +18,9 @@ and then uses the \code{\link[tabulizer]{extract_tables}} function from the
 \code{tabulizer} package to extract the tables.
 }
 \examples{
+\dontrun{
 oct2016 <- dlNotify(10, 2016)
+}
 
 }
 
