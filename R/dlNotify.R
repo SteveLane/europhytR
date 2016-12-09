@@ -19,8 +19,9 @@ dlNotify <- function(month, year){
     loc <-
         "http://ec.europa.eu/food/sites/food/files/plant/docs/ph_biosec_europhyt-interceptions-"
     fName <- paste0(loc, year, "-", month, ".pdf")
-    out <- tabulizer::extract_tables(fName,
-                                     area = list(top = 21, left = 21,
-                                                 bottom = 555, right = 850))
+    pgDim <- unlist(tabulizer::get_page_dims(fName, pages = 1))
+    out <- tabulizer::extract_tables(fName, area = list(c(0, 0, pgDim[2],
+                                                          pgDim[1])),
+                                     guess = FALSE)
     out
 }
