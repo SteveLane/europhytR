@@ -21,10 +21,11 @@ dlNotify <- function(month, year){
     fName <- paste0(loc, year, "-", month, ".pdf")
     tmp <- tempfile()
     download.file(fName, destfile = tmp)
+    nPages <- tabulizer::get_n_pages(tmp)
     pgDim <- unlist(tabulizer::get_page_dims(tmp, pages = 1))
-    out <- tabulizer::extract_tables(tmp, area = list(c(0, 0, pgDim[2],
-                                                        pgDim[1])),
-                                     guess = FALSE)
+    areas <- c(list(c(210, 0, pgDim[2], pgDim[1])),
+               rep(list(c(0, 0, pgDim[2], pgDim[1])), nPages - 1))
+    out <- tabulizer::extract_tables(tmp, area = areas, guess = FALSE)
     unlink(tmp)
     out
 }
