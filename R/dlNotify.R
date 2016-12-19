@@ -29,3 +29,10 @@ dlNotify <- function(month, year){
     unlink(tmp)
     out
 }
+
+## parseTable runs through the extracted data from europhyt. This function is
+## to be used in conjuction with \code{\link[europhytR]{dlNotify}} which
+## performs the initial extraction.
+parseTable <- function(tabs){
+    
+}
