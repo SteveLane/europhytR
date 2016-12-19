@@ -22,6 +22,15 @@ dlNotify <- function(month, year){
     tmp <- tempfile()
     utils::download.file(fName, destfile = tmp)
     nPages <- tabulizer::get_n_pages(tmp)
+    ## Figure out where to stop (interceptions for reasons other than harmful
+    ## organisms) - use agrep
+    txt <- tabulizer::extract_text(tmp, 1:nPages)
+    inds <- lapply(txt, function(x)
+        agrep("Interceptions for reasons other than presence of harmful organism(s)", x))
+    stopPage <- which(unlist(lapply(inds, function(x)
+        all(length(x) != 0))) == TRUE) - 1
+    ## Now extract by column so it all stays together. Number of columns is less
+    ## for objects though which provides a sticking point.
     pgDim <- unlist(tabulizer::get_page_dims(tmp, pages = 1))
     areas <- c(list(c(210, 0, pgDim[2], pgDim[1])),
                rep(list(c(0, 0, pgDim[2], pgDim[1])), nPages - 1))
