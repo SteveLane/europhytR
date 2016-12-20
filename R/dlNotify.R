@@ -31,10 +31,10 @@ dlNotify <- function(month, year){
         all(length(x) != 0))) == TRUE) - 1
     ## Now extract by column so it all stays together. Number of columns is less
     ## for objects though which provides a sticking point.
-    pgDim <- unlist(tabulizer::get_page_dims(tmp, pages = 1))
-    areas <- c(list(c(210, 0, pgDim[2], pgDim[1])),
-               rep(list(c(0, 0, pgDim[2], pgDim[1])), nPages - 1))
-    out <- tabulizer::extract_tables(tmp, area = areas, guess = FALSE)
+    areas <- c(list(c(230, 30, 580, 820)),
+               rep(list(c(20, 30, 580, 820)), stopPage - 1))
+    out <- tabulizer::extract_tables(tmp, pages = 1:stopPage, area = areas,
+                                     guess = TRUE, spreadsheet = TRUE)
     unlink(tmp)
     out
 }
