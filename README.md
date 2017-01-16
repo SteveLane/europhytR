@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/SteveLane/europhytR.svg?branch=master)](https://travis-ci.org/SteveLane/europhytR)
 
+- No longer in development. The tables extracted still ended up too muddled from the pdf.
+
 # europhytR: interrogate EU biosecurity notifications
 
 `europhytR` is a package to download and extract monthly interceptions data from [europhyt](http://ec.europa.eu/food/plant/plant_health_biosecurity/europhyt_en). This package is currently under active development.
